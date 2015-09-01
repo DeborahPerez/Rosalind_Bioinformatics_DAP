@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[11]:
+# In[6]:
 
 DataSet = ">Rosalind_6404CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG>Rosalind_5959CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC>Rosalind_0808CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"
    
@@ -17,12 +17,32 @@ def FASTAsection(DataSet):
 
     return positions
 
+FASTAsection(DataSet)
+
 x = FASTAsection(DataSet)
 
-seq1 = DataSet[x[0]+14:x[1]]
-print seq1
-
 for i in x
+    sequences = []
+    seq = DataSet[x[i]+14:x[i+1]]
+    sequences.append(seq)
+    return sequences
+
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
 
 
 
