@@ -1,32 +1,46 @@
 
 # coding: utf-8
 
-# In[6]:
+# In[16]:
 
 DataSet = ">Rosalind_6404CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG>Rosalind_5959CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC>Rosalind_0808CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"
-   
-def FASTAsection(DataSet):
-    positions = []
-    startposition = 0
+delimiter = '>'
+RFLIST = DataSet.split(delimiter)
 
-    while True:
-        i = DataSet.find(">", startposition)
-        if i == -1: break
-        positions.append(i)
-        startposition = i + 1
+def delete_head(RFLIST):
+    del RFLIST[0]
+    
+delete_head(RFLIST)
+print RFLIST
 
-    return positions
+#def FASTAsection(DataSet):
+#   positions = []
+#    startposition = 0
 
-FASTAsection(DataSet)
+#    while True:
+#       i = DataSet.find(">", startposition)
+#        if i == -1: break
+#        positions.append(i)
+#        startposition = i + 1
 
-x = FASTAsection(DataSet)
+#    return positions
 
-for i in x
-    sequences = []
-    seq = DataSet[x[i]+14:x[i+1]]
-    sequences.append(seq)
-    return sequences
+#FASTAsection(DataSet)
 
+#x = FASTAsection(DataSet)
+
+#for i in x:
+    #sequences = []
+    #s = (i + 1)
+    #print DataSet[i:s]
+    #sequences.append(seq)
+
+
+
+
+
+
+# In[ ]:
 
 
 
