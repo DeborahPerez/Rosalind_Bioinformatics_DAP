@@ -1,28 +1,51 @@
 
 # coding: utf-8
 
-# In[11]:
+# In[33]:
 
 DataSet = ">Rosalind_6404CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG>Rosalind_5959CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC>Rosalind_0808CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"
-   
-def FASTAsection(DataSet):
-    positions = []
-    startposition = 0
+delimiter = '>'
+RFLIST = DataSet.split(delimiter)
+#Created a list of all individual FASTA strands
+def delete_head(RFLIST):
+    del RFLIST[0]
+    
+delete_head(RFLIST)
 
-    while True:
-        i = DataSet.find(">", startposition)
-        if i == -1: break
-        positions.append(i)
-        startposition = i + 1
+#Calculated GC content of each strand and had Python remember the largest and the FASTA ID of that strand as it went through the list
+def GC_CONTENT(RFLIST):
+    largest = None
+    for STRAND in RFLIST:
+        G = float(STRAND.count("G"))
+        C = float(STRAND.count("C"))
+        L = float(len(STRAND)-13)
+        GC_COUNT = float(((G + C) / L) * 100)
+        STRAND_ID = STRAND[0:14]
+    if largest is None or GC_COUNT > largest:
+        largest = GC_COUNT
+    print STRAND_ID
+    print round(largest, 6)
 
-    return positions
+GC_CONTENT(RFLIST)
 
-x = FASTAsection(DataSet)
 
-seq1 = DataSet[x[0]+14:x[1]]
-print seq1
+# In[ ]:
 
-for i in x
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
 
 
 
