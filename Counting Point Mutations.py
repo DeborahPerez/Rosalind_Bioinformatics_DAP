@@ -1,22 +1,23 @@
 
 # coding: utf-8
 
-# string1 = raw_input("Insert First String:")
-# string2 = raw_input("Insert Second String:")
-# 
-# print string1
-# print string2
-# 
-# 
-# ls1 = list(string1)
-# ls2 = list(string2)
-# 
-# print ls1
-# print ls2
-# 
-# 
-# 
-# 
+# In[16]:
+
+string1 = "GAGCCTACTAACGGGAT"
+string2 = "CATCGTAATGACGGCCT"
+
+#Turned strings into lists
+ls1 = list(string1)
+ls2 = list(string2)
+
+#counted differences using built in zip function to mirror indices when comparing
+count = 0
+for base,pair in zip (ls1, ls2):
+    if base != pair:
+        count = count + 1
+print count
+            
+
 
 # In[ ]:
 
