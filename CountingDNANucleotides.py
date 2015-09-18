@@ -1,4 +1,9 @@
-
+#!/usr/bin/env python2
+##########################################################################
+#	USAGE: python2 CountingDNANucleotides.py
+#   DESCRIPTION: Summarize counts of all four DNA bases for a string entered when prompted.
+#   Created by Deborah Perez
+##########################################################################
 # coding: utf-8
 
 # In[1]:
