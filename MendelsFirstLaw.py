@@ -20,19 +20,24 @@ n = 2
 #population total
 total = float(k + m + n)
 
+#Creating population master list
+k = raw_input("Enter amount of k population")
+m = raw_input("Enter amount of m population")
+n = raw_input("Enter amount of n population")
+
 #probability that both individuals are k
-prob2k = k/total + k/total
+prob2k = k/total * (k-1)/(total-1)
 #probability that both individuals are m
-prob2m = m/total + m/total
+prob2m = m/total * (m-1)/(total-1)
 #probability that both individuals are m
-prob2n = n/total + n/total
+prob2n = n/total * (n-1)/(total-1)
 
 #probability that individuals are k and m
-probkm = k/total + m/total
+probkm = k/total * m/(total-1)
 #probability that individuals are k and n
-probkn = k/total + n/total
+probkn = k/total * n/(total-1)
 #probability that individuals are m and n
-probmn = m/total + n/total
+probmn = m/total * n/(total-1)
 
 #Alleles for individuals k, m, and n
 k_allele = ['A','A']
