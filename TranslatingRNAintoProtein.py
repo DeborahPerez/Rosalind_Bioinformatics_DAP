@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[5]:
+# In[6]:
 
 #Description:
 #Given: An RNA string s corresponding to a strand of mRNA (of length at most 10 kbp).
@@ -18,16 +18,20 @@ RNA_Trans = {"UUU" : "F", "UUC" : "F", "UUA" : "L", "UUG" : "L", "UCU" : "S", "U
 #Created a list from the string parsing at every nth place, n=3 and print
 SDList = [SampleDataset[i:i+3] for i in range(0, len(SampleDataset), 3)]
 
-#loop through the list using the dictionary and appending the translation to a new string
+#loop through the list using the dictionary and appending the translation to a new string. If "X" is a translation the 
+#loop will stop while not translating "X" 
 PROTEIN = []
 for codon in SDList:
     PRO = RNA_Trans[codon]
-    PROTEIN.append(PRO)
+    if PRO != "X":
+        PROTEIN.append(PRO)
+        continue
+    else:
+#join converts the list into a string of characters by "join"ing the elements of the list into a string        
+        print ''.join(PROTEIN)
 
-#join converts the list into a string of characters by "join"ing the elements of the list into a string
-print ''.join(PROTEIN)
 
-#Create loop that if "X" is present then parse off the rest of the translation because it will translate past a STOP codon"
+
 
 
 # In[ ]:
