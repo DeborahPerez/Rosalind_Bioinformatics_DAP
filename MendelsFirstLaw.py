@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[8]:
+# In[21]:
 
 #Description: 
 #Given: Three positive integers k, m, and n, representing a population containing k+m+n organisms: 
@@ -71,36 +71,44 @@ mn_off = list(itertools.product(*mn))
 
 
 #Defining a function to determine dominant phenotypes by checking for the presence of dominant characteristics 
-def find_dominant_phenotype(x):
-    dominantphenotype = 0
-    for allele in x:
-        if 'A' in allele:
-            dominantphenotype += 1  
-    
-    ratio = dominantphenotype / 4.00
-    return ratio
 
-    
+def find_dominant_phenotype(offspring):
+    dominant_allele = 0
+    for allele in offspring:
+        if 'A' in allele:
+            dominant_allele += 1  
+
+    dominant_fraction = dominant_allele / 4.00
+    return dominant_fraction
+
+#probability values of each branch will be stored in a list to execute the final sum
+dominant_amount = []  
+
 #Using find_dominant_phenotype function to count offspring with dominant phenotypes in k&k.
 #Find probability of kk branch with dominant offspring
-print find_dominant_phenotype(kk_off)
+dominant_amount.append(find_dominant_phenotype(kk_off) * prob2k)
 
 #Using find_dominant_phenotype function to count offspring with dominant phenotypes in m&m
-print find_dominant_phenotype(mm_off) 
+#Find probability of mm branch with dominant offspring
+dominant_amount.append(find_dominant_phenotype(mm_off) * prob2m)
 
 #Using find_dominant_phenotype function to count offspring with dominant phenotypes in n&n
-print find_dominant_phenotype(nn_off) 
+#Find probability of nn branch with dominant offspring
+dominant_amount.append(find_dominant_phenotype(nn_off) * prob2n)
 
 #Using find_dominant_phenotype function to count offspring with dominant phenotypes in k&m
-print find_dominant_phenotype(km_off) 
+#Find probability of km branch with dominant offspring
+dominant_amount.append(find_dominant_phenotype(km_off) *probkm)
 
 #Using find_dominant_phenotype function to count offspring with dominant phenotypes in k&n
-print find_dominant_phenotype(kn_off) 
+#Find probability of kn branch with dominant offspring
+dominant_amount.append(find_dominant_phenotype(kn_off) * probkn)
 
 #Using find_dominant_phenotype function to count offspring with dominant phenotypes in m&n
-print find_dominant_phenotype(mn_off) 
+#Find probability of mn branch with dominant offspring
+dominant_amount.append(find_dominant_phenotype(mn_off) *probmn)
     
-            
+print sum(dominant_amount)           
 
 
 # In[ ]:
