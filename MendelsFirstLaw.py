@@ -1,6 +1,11 @@
 
 # coding: utf-8
 
+# In[3]:
+
+
+
+
 # In[21]:
 
 #Description: 
@@ -27,12 +32,19 @@ prob2m = m/total * (m-1)/(total-1)
 #probability that both individuals are m
 prob2n = n/total * (n-1)/(total-1)
 
-#probability that individuals are k and m
+#probability that individuals are k and then m
 probkm = k/total * m/(total-1)
-#probability that individuals are k and n
+#probability that individuals are k and then n
 probkn = k/total * n/(total-1)
-#probability that individuals are m and n
+#probability that individuals are m and then n
 probmn = m/total * n/(total-1)
+
+#probability that individuals are m and then k
+probmk = m/total * k/(total-1)
+#probability that individuals are n and then k
+probnk = n/total * k/(total-1)
+#probability that individuals are n and then n
+probnm = n/total * m/(total-1)
 
 #Alleles for individuals k, m, and n
 k_allele = ['A','A']
@@ -107,8 +119,21 @@ dominant_amount.append(find_dominant_phenotype(kn_off) * probkn)
 #Using find_dominant_phenotype function to count offspring with dominant phenotypes in m&n
 #Find probability of mn branch with dominant offspring
 dominant_amount.append(find_dominant_phenotype(mn_off) *probmn)
+   
+#Using find_dominant_phenotype function to count offspring with dominant phenotypes in k&m
+#Find probability of km branch with dominant offspring
+dominant_amount.append(find_dominant_phenotype(km_off) *probmk)
+
+#Using find_dominant_phenotype function to count offspring with dominant phenotypes in k&n
+#Find probability of kn branch with dominant offspring
+dominant_amount.append(find_dominant_phenotype(kn_off) * probnk)
+
+#Using find_dominant_phenotype function to count offspring with dominant phenotypes in m&n
+#Find probability of mn branch with dominant offspring
+dominant_amount.append(find_dominant_phenotype(mn_off) *probnm)
     
 print sum(dominant_amount)           
+
 
 
 # In[ ]:
