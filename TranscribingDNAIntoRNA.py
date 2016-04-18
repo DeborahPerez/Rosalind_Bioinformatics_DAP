@@ -1,14 +1,29 @@
+########################################################################
+#    USAGE:
+#       python3 counting_dna_nucleotides.py
+#   DESCRIPTION:
+#       Convert 'T' in dna to 'U' in order to trascribe dna to rna
+#   ROSALIND PROBLEM:
+#       http://rosalind.info/problems/rna/
+#-----------------------------------------------------------------------
+#   CREATED BY: Deborah Perez
+#   VERSION:    20160418
+########################################################################
 
-# coding: utf-8
+#-STDIN-----------------------------------------------------------------
+import sys    # import "sys" to read from STDIN
+dna = sys.stdin.read().splitlines()    # read in the input from STDIN
+#-----------------------------------------------------------------------
 
-# In[2]:
+#-MAINCODE--------------------------------------------------------------
+def transcription(dna):
+    transcript = []
+    for line in dna:
+        rna = line.replace("T", "U")
+        transcript.append(rna)
+    return transcript
+#-----------------------------------------------------------------------
 
-DNA = raw_input ("Insert DNA Sequence")
-RNA = DNA.replace("T", "U")
-print RNA
-
-
-# In[ ]:
-
-
-
+#-STDOUT----------------------------------------------------------------
+print ('\n'.join(map(str, (transcription(dna)))))
+#-----------------------------------------------------------------------
