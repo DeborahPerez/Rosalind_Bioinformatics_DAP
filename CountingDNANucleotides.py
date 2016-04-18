@@ -1,30 +1,38 @@
-#!/usr/bin/env python2
-##########################################################################
-#	USAGE: python2 CountingDNANucleotides.py
-#   DESCRIPTION: Summarize counts of all four DNA bases for a string entered when prompted.
-#   Created by Deborah Perez
-##########################################################################
-# coding: utf-8
+########################################################################
+#    USAGE:
+#       python3 counting_nucleotides.py
+#   DESCRIPTION:
+#       Summarize counts of all four DNA bases for a string
+#       entered through standard input
+#   ROSALIND PROBLEM:
+#       http://rosalind.info/problems/dna/
+#-----------------------------------------------------------------------
+#   CREATED BY: Deborah Perez
+#   VERSION:    20160418
+########################################################################
 
-# In[1]:
-#DNA = 'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'
-DNA = raw_input ("Enter DNA Sequence:") # Python2 version of read from standard in (STDIN)
-#DNA = input("Enter DNA Sequence:") # Python3 version of read from standard in (STDIN)
-# count uppercase
-A = DNA.count("A")
-C = DNA.count("C")
-G = DNA.count("G")
-T = DNA.count("T")
-# count lowercase:
-A = A + DNA.count("a")
-C = C + DNA.count("c")
-G = G + DNA.count("g")
-T = T + DNA.count("t")
+#-STDIN-----------------------------------------------------------------
+import sys    # import "sys" to read from STDIN
+dna = sys.stdin.read().splitlines()    # read in the input from STDIN
+#-----------------------------------------------------------------------
 
-print A, C, G, T
-#print(A, C, G, T) # Python3 version of print as a function
+#-MAINCODE--------------------------------------------------------------
+def counting_nucleotides(dna):
+    a = 0
+    c = 0
+    g = 0
+    t = 0
 
-# In[ ]:
+    for line in dna:
+        a += line.count("A")
+        c += line.count("C")
+        g += line.count("G")
+        t += line.count("T")
 
+    eachNucleotideCount = a, c, g , t
+    return eachNucleotideCount
+#-----------------------------------------------------------------------
 
-
+#-STDOUT----------------------------------------------------------------
+print (' '.join(map(str, (counting_nucleotides(dna)))))
+#-----------------------------------------------------------------------
