@@ -1,15 +1,51 @@
+########################################################################
+#    USAGE:
+#       python3 ComplementingAStrandOfDNA.py
+#   DESCRIPTION:
+#       Convert a dna strand to its complement
+#   ROSALIND PROBLEM:
+#       http://rosalind.info/problems/revc/
+#-----------------------------------------------------------------------
+#   CREATED BY: Deborah Perez
+#   VERSION:    20160422
+########################################################################
 
-# coding: utf-8
+#-FUNCTIONS-------------------------------------------------------------
+def reverseComplement(dna):
+    dnaComplement = '' 
 
-# In[4]:
+    for line in dna:    # Iterate through each line in list dna
+        reverseDna = reverse(line)
+        for nucleotide in reverseDna:
+            dnaComplement += complement(nucleotide)
+    return dnaComplement
+#-----------------------------------------------------------------------
+def reverse(text):
+    result = ''
+    count = len(text) -1
+    for x in text:
+        result += text[count]
+        count -=1
+    return result
+#-----------------------------------------------------------------------
+def complement(nucleotide):
+    comp = '' 
+#    for base in Nucleotide:
+    if nucleotide is 'A':
+        comp += 'T'
+    elif nucleotide is 'T':
+        comp += 'A'
+    elif nucleotide is 'C':
+        comp += 'G'
+    elif nucleotide is 'G':
+        comp += 'C'
+    else:
+        stop
+    return comp
 
-DNA = raw_input ("Insert DNA Sequence")
-rDNA = DNA[::-1]
-RNA = rDNA.replace("A", "t").replace("T", "A").replace("C", "g").replace("G", "C").replace("g", "G").replace("t", "T")
-print RNA
-
-
-# In[ ]:
-
-
-
+#-MAINCODE--------------------------------------------------------------
+import sys    # import "sys" to read from STDIN
+dna = sys.stdin.read().splitlines()    # read in the input from STDIN
+#print ('\n'.join(map(str, (transcription(dna)))))
+print (reverseComplement(dna))
+#-----------------------------------------------------------------------
