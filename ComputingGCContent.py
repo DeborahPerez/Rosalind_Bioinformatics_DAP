@@ -46,5 +46,12 @@ dnaFastAFormat = sys.stdin.read().splitlines()    # Read in the input from STDIN
 dnaFastAFormat = (''.join(map(str,(dnaFastAFormat))))    # 1
 delimiter = '>'    # '>' character where splitting occurs
 dnaStrands = dnaFastAFormat.split(delimiter)    # 2
-print (compute_gc_content(dnaFastAFormat):)    # Print results as STDOUT
+del dnaStrands[0]
+
+finalDnaStrands = {}
+for strand in dnaStrands:
+    rosalindTag = strand[:13]
+    dna = strand[13:]
+    finalDnaStrands[rosalindTag] = dna
+# print (compute_gc_content(dnaFastAFormat):)    # Print results as STDOUT
 #-----------------------------------------------------------------------
