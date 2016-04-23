@@ -40,5 +40,5 @@ def rabbit_recurrence_relations(n, k):
 import sys    # Import "sys" to read from STDIN
 nAndKValues = sys.stdin.read().splitlines()    # Read in the input from STDIN
 n, k = map(int, nAndKValues.split(" "))
-print (transcription(dna))    # Print output as STDOUT
+print (rabbit_recurrence_relations(n, k))    # Print output as STDOUT
 #-----------------------------------------------------------------------
