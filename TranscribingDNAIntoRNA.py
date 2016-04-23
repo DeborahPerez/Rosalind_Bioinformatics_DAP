@@ -22,12 +22,11 @@ def transcription(dna):    # Set dna as variable for function.
                 transcript += nucleotide    # Append it to 'transcript'
             else:    #If the nucleotide is 'T'
                 transcript += 'U'    # Append a 'U' to transcript
-    return transcript
+    return transcript    # Return output
 #-----------------------------------------------------------------------
 
 #-MAINCODE--------------------------------------------------------------
-import sys    # import "sys" to read from STDIN
-dna = sys.stdin.read().splitlines()    # read in the input from STDIN
-#print ('\n'.join(map(str, (transcription(dna)))))
-print (transcription(dna))
+import sys    # Import "sys" to read from STDIN
+dna = sys.stdin.read().splitlines()    # Read in the input from STDIN
+print (transcription(dna))    # Print output as STDOUT
 #-----------------------------------------------------------------------
