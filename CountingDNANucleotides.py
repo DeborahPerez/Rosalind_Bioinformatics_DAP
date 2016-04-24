@@ -8,36 +8,37 @@
 #       http://rosalind.info/problems/dna/
 #-----------------------------------------------------------------------
 #   CREATED BY: Deborah Perez
-#   VERSION:    20160422
+#   VERSION:    20160424
 ########################################################################
 
-#-FUNCTIONS-------------------------------------------------------------
-# Counts all four types of nucleotides (A, C, G, T) in DNA.
-def count_nucleotides(dna):    # Set dna as variable for function.
-    nucleotideCount = {}    # Create array for nucleotide counts.
-    for base in 'ACGT':    # Set up keys in array to be nucleotides.
-        nucleotideCount[base] = 0    # Initialize values in array to 0.
+import sys
 
-    for line in dna:    #Iterate through each line in list dna
-        nucleotideCount['A'] += line.count('A')     #count all 'A's
-        nucleotideCount['C'] += line.count('C')     #count all 'C's
-        nucleotideCount['G'] += line.count('G')     #count all 'G's
-        nucleotideCount['T'] += line.count('T')     #count all 'T's
-
-# return count of 'A' 'C' 'G' 'T' in that order
-    listOfCounts = []    # Create an empty list 'listOfCounts
-    
-# 1. Iterate through a sorted nucleotideCount by key name
-# 2. Append values of sorted keys to listOfCounts
-    for count in sorted(nucleotideCount.keys()): # 1
-        listOfCounts.append(nucleotideCount[count]) # 2
+# count_nucleotides ----------------------------------------------------
+# Counts all four types of nucleotides (A, C, G, T) in DNA
+# @param dna one or more lines of dna text
+# @return an array of nucleotide counts, in the order of A, C, G, T
+# ----------------------------------------------------------------------
+def count_nucleotides(dna):   
+# Initialize dictionary associating nucleotides with count values
+    nucleotideCount = {}
+# Fill dictionary 
+    for base in 'ACGT':
+        nucleotideCount[base] = 0
+# Shift counts into array
+    for line in dna:
+        nucleotideCount['A'] += line.count('A')
+        nucleotideCount['C'] += line.count('C')
+        nucleotideCount['G'] += line.count('G')
+        nucleotideCount['T'] += line.count('T')
+# Return in the order of A, C, G, T
+    listOfCounts = []  
+    for base in sorted(nucleotideCount.keys()): 
+        listOfCounts.append(nucleotideCount[base]) 
     return listOfCounts
-#-----------------------------------------------------------------------
+# ----------------------------------------------------------------------
 
-#-MAINCODE--------------------------------------------------------------
-import sys    # import "sys" to read from STDIN
-dna = sys.stdin.read().splitlines()    # read STDIN and create list
-
-# Converts list to a string and joins values with a space (' ')
-print (' '.join(map(str,(count_nucleotides(dna)))))    # output
-#-----------------------------------------------------------------------
+# MAINCODE -------------------------------------------------------------
+dna = sys.stdin.read().splitlines()
+# Convert count array into a space-seperated list of counts
+print (' '.join(map(str,(count_nucleotides(dna)))))
+# ----------------------------------------------------------------------
