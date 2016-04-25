@@ -18,22 +18,20 @@ import sys
 # @param dna one or more lines of dna text
 # @return an array of nucleotide counts, in the order of A, C, G, T
 # ----------------------------------------------------------------------
-def count_nucleotides(dna):   
+def count_nucleotides(dna):
 # Initialize dictionary associating nucleotides with count values
     nucleotideCount = {}
-# Fill dictionary 
+# Fill dictionary
     for base in 'ACGT':
         nucleotideCount[base] = 0
 # Shift counts into array
-    for line in dna:
-        nucleotideCount['A'] += line.count('A')
-        nucleotideCount['C'] += line.count('C')
-        nucleotideCount['G'] += line.count('G')
-        nucleotideCount['T'] += line.count('T')
+    for base in 'ACGT':
+        for line in dna:
+            nucleotideCount[base] += line.count(base)
 # Return in the order of A, C, G, T
-    listOfCounts = []  
-    for base in sorted(nucleotideCount.keys()): 
-        listOfCounts.append(nucleotideCount[base]) 
+    listOfCounts = []
+    for base in sorted(nucleotideCount.keys()):
+        listOfCounts.append(nucleotideCount[base])
     return listOfCounts
 # ----------------------------------------------------------------------
 
