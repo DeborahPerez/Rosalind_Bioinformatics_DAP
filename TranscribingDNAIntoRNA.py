@@ -10,6 +10,8 @@
 #   VERSION:    20160422
 ########################################################################
 
+# Notes: Accomodate FASTA format
+
 #-FUNCTIONS-------------------------------------------------------------
 # Transcribes dna into rna by replacing all 'T's with 'U's
 def transcription(dna):    # Set dna as variable for function.
@@ -22,11 +24,12 @@ def transcription(dna):    # Set dna as variable for function.
                 transcript += nucleotide    # Append it to 'transcript'
             else:    #If the nucleotide is 'T'
                 transcript += 'U'    # Append a 'U' to transcript
-    return transcript    # Return output
+    return transcript
 #-----------------------------------------------------------------------
 
 #-MAINCODE--------------------------------------------------------------
-import sys    # Import "sys" to read from STDIN
-dna = sys.stdin.read().splitlines()    # Read in the input from STDIN
-print (transcription(dna))    # Print output as STDOUT
+import sys    # import "sys" to read from STDIN
+dna = sys.stdin.read().splitlines()    # read in the input from STDIN
+#print ('\n'.join(map(str, (transcription(dna)))))
+print (transcription(dna))
 #-----------------------------------------------------------------------
