@@ -40,7 +40,7 @@ def rabbit_recurrence_relations(n, k):
 # Returns output
     return total
 #-----------------------------------------------------------------------
-#-MAINCODE--------------------------------------------------------------
+#---MAINCODE------------------------------------------------------------
 nAndKValues = sys.stdin.read().splitlines()
 n, k = map(int, nAndKValues[0].split(" "))
 print (rabbit_recurrence_relations(n, k))

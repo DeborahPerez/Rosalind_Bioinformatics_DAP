@@ -8,50 +8,45 @@
 #       http://rosalind.info/problems/gc/
 #-----------------------------------------------------------------------
 #   CREATED BY: Deborah Perez
-#   VERSION:    20160423
+#   VERSION:    20160521
 ########################################################################
-
-#-FUNCTIONS-------------------------------------------------------------
-
-def compute_gc_content(dnaFastAFormat):
-
-
-def delete_head(RFLIST):
-    del RFLIST[0]
-
-delete_head(RFLIST)
-
-#Calculated GC content of each strand and had Python remember the largest and the FASTA ID of that strand as it went through the list
+import sys
+#---compute_gc_content--------------------------------------------------
+# Calculates GC content of input and returns largest and its FASTA ID
+# @param dictionary of dna ID as keys and dna as values
+# @return ID of highest GC content and its result
+#-----------------------------------------------------------------------
+def compute_gc_content(dnaWithIDs):
+    highestGCContent = None
 # Computes percentage of 'G's and 'C's present in a text
-def compute_gc_content(dnaFastAFormat):
-    largest = None
-    for STRAND in RFLIST:
-        G = float(STRAND.count("G"))
-        C = float(STRAND.count("C"))
-        L = float(len(STRAND)-13)
-        GC_COUNT = float(((G + C) / L) * 100)
-        STRAND_ID = STRAND[0:14]
-    if largest is None or GC_COUNT > largest:
-        largest = GC_COUNT
-    print STRAND_ID
-    print round(largest, 6)
-
-GC_CONTENT(RFLIST)
-
-#-MAINCODE--------------------------------------------------------------
-# 1. Joins list into one string
-# 2. Creates a list of all individual dna strands
-import sys    # Import "sys" to read from STDIN
-dnaFastAFormat = sys.stdin.read().splitlines()    # Read in the input from STDIN
-dnaFastAFormat = (''.join(map(str,(dnaFastAFormat))))    # 1
-delimiter = '>'    # '>' character where splitting occurs
-dnaStrands = dnaFastAFormat.split(delimiter)    # 2
+    for dnaID in dnaWithIDs:
+        gCount = float(dnaWithIDs[dnaID].count("G"))
+        cCount = float(dnaWithIDs[dnaID].count("C"))
+        dnaLength = float(len(dnaWithIDs[dnaID]))
+        countGC = float(((gCount + cCount) / dnaLength) * 100)
+# Keeps track of highest score GC content
+        if highestGCContent is None or countGC > highestGCContent:
+            highestGCContent = countGC
+            rosalindTag = dnaID
+# Prints dnaID aka Rosalind Tag of dna with highest GC content
+    print (rosalindTag)
+# Returns value of highest GC content
+    return round(highestGCContent, 6)
+#-----------------------------------------------------------------------
+#---MAINCODE------------------------------------------------------------
+# Joins file data into one string
+dnaFastaFormat = sys.stdin.read().splitlines()
+dnaFastaFormat = (''.join(map(str,(dnaFastaFormat))))
+# Creates a list of all dna strands
+delimiter = '>'
+dnaStrands = dnaFastaFormat.split(delimiter)
 del dnaStrands[0]
-
-finalDnaStrands = {}
+# Creates a dictionary with Rosalind tags as keys and the dna as values
+dnaWithIDs = {}
 for strand in dnaStrands:
     rosalindTag = strand[:13]
     dna = strand[13:]
-    finalDnaStrands[rosalindTag] = dna
-# print (compute_gc_content(dnaFastAFormat):)    # Print results as STDOUT
+    dnaWithIDs[rosalindTag] = dna
+#print (compute_gc_content(dnaWithID)
+print (compute_gc_content(dnaWithIDs))
 #-----------------------------------------------------------------------
