@@ -8,12 +8,12 @@
 #       http://rosalind.info/problems/dna/
 #-----------------------------------------------------------------------
 #   CREATED BY: Deborah Perez
-#   VERSION:    20160426
+#   VERSION:    20160424
 ########################################################################
 
 import sys
 
-# ---count_nucleotides--------------------------------------------------
+# count_nucleotides ----------------------------------------------------
 # Counts all four types of nucleotides (A, C, G, T) in DNA
 # @param dna one or more lines of dna text
 # @return an array of nucleotide counts, in the order of A, C, G, T
@@ -35,8 +35,8 @@ def count_nucleotides(dna):
     return listOfCounts
 # ----------------------------------------------------------------------
 
-# ---MAINCODE-----------------------------------------------------------
-dna = sys.stdin.read().splitlines()
+# MAINCODE -------------------------------------------------------------
+dna = sys.stdin.readline().splitlines()
 # Convert count array into a space-seperated list of counts
 print (' '.join(map(str,(count_nucleotides(dna)))))
 # ----------------------------------------------------------------------
